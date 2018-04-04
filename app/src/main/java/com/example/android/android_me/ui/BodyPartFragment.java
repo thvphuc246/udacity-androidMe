@@ -2,6 +2,7 @@ package com.example.android.android_me.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,8 +38,16 @@ public class BodyPartFragment extends Fragment {
         // Get a reference to the ImageView in the fragment layout
         ImageView imageView = (ImageView) rootView.findViewById(R.id.body_part_image_view);
 
-        // Set the image to the first in our list of head images
-        imageView.setImageResource(AndroidImageAssets.getHeads().get(0));
+        /*
+        If a list of image ids exists, set the image resource to the correct item in that list
+        Otherwise, create a Log statement that indicates that the list was not found
+        */
+        if (mImageIds != null) {
+            //Set the image resource to the list item at the stored index
+            imageView.setImageResource(mImageIds.get(mListIndex));
+        } else {
+            Log.v(TAG, "List of image id's is null");
+        }
 
         // Return the rootView
         return rootView;
