@@ -10,8 +10,15 @@ import android.widget.ImageView;
 import com.example.android.android_me.R;
 import com.example.android.android_me.data.AndroidImageAssets;
 
-public class BodyPartFragment extends Fragment {
+import java.util.List;
 
+public class BodyPartFragment extends Fragment {
+    // Tag for logging
+    private static final String TAG = "BodyPartFragment";
+
+    // Variables to store a list of image resources and the index of the image that this fragment displays
+    private List<Integer> mImageIds;
+    private int mListIndex;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the fragment
      */
@@ -37,4 +44,14 @@ public class BodyPartFragment extends Fragment {
         return rootView;
     }
 
+    // Setter methods for keeping track of the list images this fragment can display and which image
+    // in the list is currently being displayed
+
+    public void setImageIds(List<Integer> imageIds) {
+        mImageIds = imageIds;
+    }
+
+    public void setListIndex(int index) {
+        mListIndex = index;
+    }
 }
